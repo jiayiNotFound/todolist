@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-7">
+      <!-- Content here -->
+      <div class="card text-center">
+        <div class="card-body bg-warning text-white" style="--bs-bg-opacity: .5;">
+          <h4 class="card-title">todoList</h4>
+          <input type="text" class="form-control" placeholder="what's your plan today?" aria-label="Username"
+            aria-describedby="basic-addon1" [(ngModel)]="keyWord" (keyup)="handelSubmit($event)">
+        </div>
+      </div>
+      <div class="card text-left mt-3">
+        <div class="card-body">
+          <h4 class="card-title"><i class="fas fa-running" style="color:#4AB3FF"></i> Progressing</h4>
+          <div class="form-check mb-1" style="background-color:#FAF8FF" *ngFor="let item of list;let key=index">
+            <div *ngIf="item.status==false">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled"
+                [(ngModel)]="item.status" (change)="checkboxChange()">
+              <label class="fs-1">
+                {{item.title}}
+              </label>
+              <button type="button" class="btn btn-warning btn-sm float-right" style="padding:2px 5px"
+                (click)="handelDelete(key)"><i class="far fa-trash-alt " style="color:white"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card text-left mt-3">
+        <div class="card-body">
+          <h4 class="card-title"><i class="fas fa-clipboard-check" style="color:#00C2A2"></i> Completed</h4>
+          <div class="form-check mb-1" style="background-color:#FAF8FF" *ngFor="let item of list;let key=index">
+            <div *ngIf="item.status==true">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckCheckedDisabled"
+                [(ngModel)]="item.status" (change)="checkboxChange()">
+              <label class="fs-1">
+                {{item.title}}
+              </label>
+              <button type="button" class="btn btn-warning btn-sm float-right" style="padding:2px 5px"
+                (click)="handelDelete(key)"><i class="far fa-trash-alt " style="color:white"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
